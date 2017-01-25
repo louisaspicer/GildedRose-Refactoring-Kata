@@ -6,6 +6,9 @@ function GildedRose() {
 
 GildedRose.prototype = {
 
+  _agedBrie: function(index) {
+    this.items[index].quality += 2;
+  },
 
   updateQuality: function() {
     for (var i = 0; i < this.items.length; i++) {

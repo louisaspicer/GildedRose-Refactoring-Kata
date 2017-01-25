@@ -14,7 +14,7 @@ describe("GildedRose", function() {
     it("increases quality by 2", function() {
       var item = {name: "Aged Brie", sellIn: 2, quality: 5};
       gildedRose.items = [item];
-      gildedRose._agedBrie();
+      gildedRose._agedBrie(0);
       expect(gildedRose.items[0].quality).toEqual(7);
     });
   });
