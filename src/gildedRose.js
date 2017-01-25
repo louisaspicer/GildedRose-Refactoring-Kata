@@ -31,11 +31,16 @@ GildedRose.prototype = {
     this.items[index].sellIn -= 1;
   },
 
+  _isQualityLessThanZero: function(index) {
+    if (this.items[index].quality <= 0) {
+      throw new Error("'Quality' has reached 0");
+    }
+  },
+
   updateQuality: function() {
     for (var i = 0; i < this.items.length; i++) {
-      if (this.items[i].quality <= 0) {
-        throw new Error("'Quality' has reached 0");
-      } else if (this.items[i].name === "Aged Brie") {
+      this._isQualityLessThanZero(i);
+      if (this.items[i].name === "Aged Brie") {
         this._updateAgedBrie(i);
       } else if (this.items[i].name === "Backstage passes to a TAFKAL80ETC concert") {
         this._updateBackstagePasses(i);
@@ -43,9 +48,9 @@ GildedRose.prototype = {
         this.items[i].sellIn -= 1;
         this.items[i].quality -= 1;
       }
-    if (this.items[i].sellIn < 0) {
-        this.items[i].quality -= 1;
-    }
+      if (this.items[i].sellIn < 0) {
+          this.items[i].quality -= 1;
+      }
     }
   }
 };
