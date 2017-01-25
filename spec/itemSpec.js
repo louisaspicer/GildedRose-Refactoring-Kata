@@ -10,6 +10,10 @@ describe("Item", function() {
     expect(item.name).toEqual("Aged Brie");
   });
 
+  it ("has a 'Sell-In' number", function() {
+    expect(item.sellIn).toEqual(1);
+  });
+
   describe("Edge cases", function() {
 
     it("cannot be given a Sell In number less than 1", function() {
