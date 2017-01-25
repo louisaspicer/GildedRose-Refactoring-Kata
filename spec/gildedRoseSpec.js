@@ -100,14 +100,23 @@ describe("GildedRose", function() {
 
   describe("Update Quality", function() {
 
-    beforeEach(function() {
-      var item = {name: "Aged Brie", sellIn: 2, quality: 5};
-      gildedRose.items = [item];
+    describe("Brie", function() {
+      it("updates the Aged Brie item", function() {
+        var item = {name: "Aged Brie", sellIn: 2, quality: 5};
+        gildedRose.items = [item];
+        gildedRose.updateQuality();
+        expect(gildedRose.items[0].quality).toEqual(6);
+      });
     });
 
-    it("updates the Aged Brie item", function() {
-      gildedRose.updateQuality();
-      expect(gildedRose.items[0].quality).toEqual(6);
+    describe("Backstage Passes", function() {
+      it("updates the backstage pass item", function() {
+        var item = {name: "Backstage passes to a TAFKAL80ETC concert", sellIn: 12, quality: 5};
+        gildedRose.items = [item];
+        gildedRose.updateQuality();
+        expect(gildedRose.items[0].quality).toEqual(6);
+      });
+
     });
 
   });
