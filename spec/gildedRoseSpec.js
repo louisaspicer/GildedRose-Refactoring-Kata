@@ -100,6 +100,12 @@ describe("GildedRose", function() {
 
   describe("Update Quality", function() {
 
+    it("throws error if quality has reached 0", function() {
+      var item = {name: "Aged Brie", sellIn: 2, quality: 0};
+      gildedRose.items = [item];
+      expect(function(){ gildedRose.updateQuality(); }).toThrowError("'Quality' has reached 0");
+    });
+
     describe("Brie", function() {
       it("updates the Aged Brie item", function() {
         var item = {name: "Aged Brie", sellIn: 2, quality: 5};
@@ -116,6 +122,8 @@ describe("GildedRose", function() {
         gildedRose.updateQuality();
         expect(gildedRose.items[0].quality).toEqual(6);
       });
+
+
 
     });
 
