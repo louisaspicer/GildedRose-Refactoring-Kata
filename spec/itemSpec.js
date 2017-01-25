@@ -10,8 +10,12 @@ describe("Item", function() {
     expect(item.name).toEqual("Aged Brie");
   });
 
-  it ("has a 'Sell-In' number", function() {
+  it("has a 'Sell-In' number", function() {
     expect(item.sellIn).toEqual(1);
+  });
+
+  it("has a 'Quality' number", function() {
+    expect(item.quality).toEqual(0);
   });
 
   describe("Edge cases", function() {
