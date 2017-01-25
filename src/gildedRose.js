@@ -37,6 +37,12 @@ GildedRose.prototype = {
     }
   },
 
+  _isSellInLessThanZero: function(index) {
+    if (this.items[index].sellIn < 0) {
+        this.items[index].quality -= 1;
+    }
+  },
+
   updateQuality: function() {
     for (var i = 0; i < this.items.length; i++) {
       this._isQualityLessThanZero(i);
@@ -48,9 +54,7 @@ GildedRose.prototype = {
         this.items[i].sellIn -= 1;
         this.items[i].quality -= 1;
       }
-      if (this.items[i].sellIn < 0) {
-          this.items[i].quality -= 1;
-      }
+      this._isSellInLessThanZero(i);
     }
   }
 };
