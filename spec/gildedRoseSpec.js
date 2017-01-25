@@ -29,15 +29,34 @@ describe("GildedRose", function() {
 
   describe("Backstage Passes", function() {
 
-    beforeEach(function() {
-      var item = {name: "Backstage passes to a TAFKAL80ETC concert", sellIn: 5, quality: 5};
-      gildedRose.items = [item];
+    describe("SellIn number is more than 10", function() {
+
+      beforeEach(function() {
+        var item = {name: "Backstage passes to a TAFKAL80ETC concert", sellIn: 11, quality: 5};
+        gildedRose.items = [item];
+      });
+
+      it("increases quality by 1", function() {
+        gildedRose._updateBackstagePasses(0);
+        expect(gildedRose.items[0].quality).toEqual(6);
+      });
+
+      it("decreases sellIn by 1", function() {
+        gildedRose._updateBackstagePasses(0);
+        expect(gildedRose.items[0].sellIn).toEqual(10);
+      });
     });
 
-    describe("SellIn number is more than 10", function() {
-      it("increases quality by 1", function() {
-        gildedRose._updateBackstagePasses();
-        expect(gildedRose.items[0].quality).toEqual(6);
+    describe("SellIn number is less than 10 but more than 5", function() {
+
+      beforeEach(function() {
+        var item = {name: "Backstage passes to a TAFKAL80ETC concert", sellIn: 8, quality: 5};
+        gildedRose.items = [item];
+      });
+
+      it("increases quality by 2", function() {
+        gildedRose._updateBackstagePasses(0);
+        expect(gildedRose.items[0].quality).toEqual(7);
       });
     });
   });

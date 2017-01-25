@@ -11,6 +11,23 @@ GildedRose.prototype = {
     this.items[index].sellIn -= 1;
   },
 
+  _updateBackstagePasses: function(index) {
+    if (this.items[index].sellIn > 10) {
+      this.items[index].quality += 1;
+      this.items[index].sellIn -= 1;
+    } else if (this.items[index].sellIn <= 10) {
+      this.items[index].quality += 2;
+      this.items[index].sellIn -= 1;
+    }
+    // }
+    //
+    // (this.items[index].sellIn < 10) {
+    //   this.items[index].quality += 2;
+    // } else {
+    //
+    // }
+  },
+
   updateQuality: function() {
     for (var i = 0; i < this.items.length; i++) {
       if (this.items[i].name != 'Aged Brie' && this.items[i].name != 'Backstage passes to a TAFKAL80ETC concert') {
