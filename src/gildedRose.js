@@ -14,18 +14,10 @@ GildedRose.prototype = {
   _updateBackstagePasses: function(index) {
     if (this.items[index].sellIn > 10) {
       this.items[index].quality += 1;
-      this.items[index].sellIn -= 1;
     } else if (this.items[index].sellIn <= 10) {
       this.items[index].quality += 2;
-      this.items[index].sellIn -= 1;
     }
-    // }
-    //
-    // (this.items[index].sellIn < 10) {
-    //   this.items[index].quality += 2;
-    // } else {
-    //
-    // }
+    this.items[index].sellIn -= 1;
   },
 
   updateQuality: function() {

@@ -58,6 +58,11 @@ describe("GildedRose", function() {
         gildedRose._updateBackstagePasses(0);
         expect(gildedRose.items[0].quality).toEqual(7);
       });
+
+      it("decreases sellIn by 1", function() {
+        gildedRose._updateBackstagePasses(0);
+        expect(gildedRose.items[0].sellIn).toEqual(7);
+      });
     });
   });
 
