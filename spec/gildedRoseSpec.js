@@ -3,7 +3,6 @@ describe("GildedRose", function() {
 
   beforeEach(function() {
     gildedRose = new GildedRose();
-    // item = jasmine.createSpyObj('item', ['name']);
   });
 
   it("has an items property", function() {
@@ -27,6 +26,21 @@ describe("GildedRose", function() {
       expect(gildedRose.items[0].sellIn).toEqual(1);
     });
   });
+
+  describe("Update Quality", function() {
+
+    beforeEach(function() {
+      var item = {name: "Aged Brie", sellIn: 2, quality: 5};
+      gildedRose.items = [item];
+    });
+
+    it("updates the Aged Brie item", function() {
+      gildedRose.updateQuality();
+      expect(gildedRose.items[0].quality).toEqual(6);
+    });
+
+  });
+
 
 
 
