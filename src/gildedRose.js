@@ -6,7 +6,7 @@ function GildedRose() {
 
 GildedRose.prototype = {
 
-  _agedBrie: function(index) {
+  _updateAgedBrie: function(index) {
     this.items[index].quality += 1;
     this.items[index].sellIn -= 1;
   },
@@ -52,7 +52,6 @@ GildedRose.prototype = {
           }
         } else {
           if (this.items[i].quality < 50) {
-            console.log(1);
             this._agedBrie(i);
           }
         }

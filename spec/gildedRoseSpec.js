@@ -17,13 +17,28 @@ describe("GildedRose", function() {
     });
 
     it("increases quality by 1", function() {
-      gildedRose._agedBrie(0);
+      gildedRose._updateAgedBrie(0);
       expect(gildedRose.items[0].quality).toEqual(6);
     });
 
     it("decreases sellIn number by 1", function() {
-      gildedRose._agedBrie(0);
+      gildedRose._updateAgedBrie(0);
       expect(gildedRose.items[0].sellIn).toEqual(1);
+    });
+  });
+
+  describe("Backstage Passes", function() {
+
+    beforeEach(function() {
+      var item = {name: "Backstage passes to a TAFKAL80ETC concert", sellIn: 5, quality: 5};
+      gildedRose.items = [item];
+    });
+
+    describe("SellIn number is more than 10", function() {
+      it("increases quality by 1", function() {
+        gildedRose._updateBackstagePasses();
+        expect(gildedRose.items[0].quality).toEqual(6);
+      });
     });
   });
 
