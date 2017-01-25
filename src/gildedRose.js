@@ -17,8 +17,10 @@ GildedRose.prototype = {
       this.items[index].quality += 1;
     } else if (sellIn <= 10 && sellIn > 5) {
       this.items[index].quality += 2;
-    } else {
+    } else if (sellIn <= 5 && sellIn >= 0) {
       this.items[index].quality += 3;
+    } else {
+      this.items[index].quality = 0;
     }
     this.items[index].sellIn -= 1;
   },
