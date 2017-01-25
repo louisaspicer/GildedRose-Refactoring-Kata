@@ -85,17 +85,13 @@ describe("GildedRose", function() {
 
     describe("SellIn number is less than 0", function() {
 
-      beforeEach(function() {
+      it("drops the Quality to 0", function() {
         var item = {name: "Backstage passes to a TAFKAL80ETC concert", sellIn: -1, quality: 5};
         gildedRose.items = [item];
-      });
-
-      it("Quality drops to 0", function() {
         gildedRose._updateBackstagePasses(0);
         expect(gildedRose.items[0].quality).toEqual(0);
       });
     });
-
   });
 
   describe("Update Quality", function() {
@@ -122,9 +118,15 @@ describe("GildedRose", function() {
         gildedRose.updateQuality();
         expect(gildedRose.items[0].quality).toEqual(6);
       });
+    });
 
-
-
+    describe("Sulfuras", function() {
+      it("doesn't decrease in quality or have a sellIn number", function() {
+        var item = {name: "Sulfuras, Hand of Ragnaros", sellIn: 0, quality: 40};
+        gildedRose.items = [item];
+        gildedRose.updateQuality();
+        expect(gildedRose.items[0].quality).toEqual(40);
+      });
     });
 
   });
