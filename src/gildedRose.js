@@ -8,6 +8,7 @@ GildedRose.prototype = {
 
   _agedBrie: function(index) {
     this.items[index].quality += 2;
+    this.items[index].sellIn -= 1;
   },
 
   updateQuality: function() {

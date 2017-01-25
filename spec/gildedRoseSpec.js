@@ -11,11 +11,20 @@ describe("GildedRose", function() {
   });
 
   describe("Aged Brie", function() {
-    it("increases quality by 2", function() {
+
+    beforeEach(function() {
       var item = {name: "Aged Brie", sellIn: 2, quality: 5};
       gildedRose.items = [item];
+    });
+
+    it("increases quality by 2", function() {
       gildedRose._agedBrie(0);
       expect(gildedRose.items[0].quality).toEqual(7);
+    });
+
+    it("decreases sellIn number by 1", function() {
+      gildedRose._agedBrie(0);
+      expect(gildedRose.items[0].sellIn).toEqual(1);
     });
   });
 
