@@ -12,10 +12,13 @@ GildedRose.prototype = {
   },
 
   _updateBackstagePasses: function(index) {
-    if (this.items[index].sellIn > 10) {
+    var sellIn = this.items[index].sellIn
+    if (sellIn > 10) {
       this.items[index].quality += 1;
-    } else if (this.items[index].sellIn <= 10) {
+    } else if (sellIn <= 10 && sellIn > 5) {
       this.items[index].quality += 2;
+    } else {
+      this.items[index].quality += 3;
     }
     this.items[index].sellIn -= 1;
   },

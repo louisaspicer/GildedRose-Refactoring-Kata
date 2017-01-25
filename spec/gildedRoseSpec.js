@@ -64,6 +64,38 @@ describe("GildedRose", function() {
         expect(gildedRose.items[0].sellIn).toEqual(7);
       });
     });
+
+    describe("SellIn number is 5 or less", function() {
+
+      beforeEach(function() {
+        var item = {name: "Backstage passes to a TAFKAL80ETC concert", sellIn: 5, quality: 5};
+        gildedRose.items = [item];
+      });
+
+      it("increases quality by 2", function() {
+        gildedRose._updateBackstagePasses(0);
+        expect(gildedRose.items[0].quality).toEqual(8);
+      });
+
+      it("decreases sellIn by 1", function() {
+        gildedRose._updateBackstagePasses(0);
+        expect(gildedRose.items[0].sellIn).toEqual(4);
+      });
+    });
+
+    describe("SellIn number is less than 0", function() {
+
+      beforeEach(function() {
+        var item = {name: "Backstage passes to a TAFKAL80ETC concert", sellIn: -1, quality: 5};
+        gildedRose.items = [item];
+      });
+
+      it("Quality drops to 0", function() {
+        gildedRose._updateBackstagePasses(0);
+        expect(gildedRose.items[0].quality).toEqual(0);
+      });
+    });
+
   });
 
   describe("Update Quality", function() {
