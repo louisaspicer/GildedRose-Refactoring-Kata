@@ -1,10 +1,34 @@
 "use strict";
 
-function GildedRose() {
+function GildedRose(itemKlass) {
   this.items = [];
+  this.item = itemKlass;
 }
 
 GildedRose.prototype = {
+
+  addNewItem: function(name, sellIn, quality) {
+    this.items.push(new this.item(name, sellIn, quality));
+  },
+
+  updateQuality: function() {
+    for (var i = 0; i < this.items.length; i++) {
+      this._checkItemType(i);
+      this._isSellInLessThanZero(i);
+    }
+  },
+
+  _checkItemType: function(index) {
+    this._isQualityLessThanZero(index);
+    if (this.items[index].name === "Aged Brie") {
+      this._updateAgedBrie(index);
+    } else if (this.items[index].name === "Backstage passes to a TAFKAL80ETC concert") {
+      this._updateBackstagePasses(index);
+    } else if (this.items[index].name != "Sulfuras, Hand of Ragnaros") {
+      this.items[index].sellIn -= 1;
+      this.items[index].quality -= 1;
+    }
+  },
 
   _updateAgedBrie: function(index) {
     var quality = this.items[index].quality;
@@ -43,18 +67,4 @@ GildedRose.prototype = {
     }
   },
 
-  updateQuality: function() {
-    for (var i = 0; i < this.items.length; i++) {
-      this._isQualityLessThanZero(i);
-      if (this.items[i].name === "Aged Brie") {
-        this._updateAgedBrie(i);
-      } else if (this.items[i].name === "Backstage passes to a TAFKAL80ETC concert") {
-        this._updateBackstagePasses(i);
-      } else if (this.items[i].name != "Sulfuras, Hand of Ragnaros") {
-        this.items[i].sellIn -= 1;
-        this.items[i].quality -= 1;
-      }
-      this._isSellInLessThanZero(i);
-    }
-  }
 };
