@@ -41,8 +41,11 @@ GildedRose.prototype = {
         this._updateBackstagePasses(i);
       } else if (this.items[i].name != "Sulfuras, Hand of Ragnaros") {
         this.items[i].sellIn -= 1;
-        this.items[i].quality += 1;
+        this.items[i].quality -= 1;
       }
+    if (this.items[i].sellIn < 0) {
+        this.items[i].quality -= 1;
+    }
     }
   }
 };

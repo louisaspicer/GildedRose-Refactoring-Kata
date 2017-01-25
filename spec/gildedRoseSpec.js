@@ -129,6 +129,15 @@ describe("GildedRose", function() {
       });
     });
 
+    describe("SellIn date has passed", function() {
+      it("decreases in quality twice as fast", function() {
+        var item = {name: "something else", sellIn: -1, quality: 40};
+        gildedRose.items = [item];
+        gildedRose.updateQuality();
+        expect(gildedRose.items[0].quality).toEqual(38);
+      });
+    });
+
   });
 
 
