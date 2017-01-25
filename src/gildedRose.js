@@ -7,20 +7,26 @@ function GildedRose() {
 GildedRose.prototype = {
 
   _updateAgedBrie: function(index) {
-    this.items[index].quality += 1;
-    this.items[index].sellIn -= 1;
+    var quality = this.items[index].quality;
+    if (quality <= 50) {
+      this.items[index].quality += 1;
+      this.items[index].sellIn -= 1;
+    }
   },
 
   _updateBackstagePasses: function(index) {
     var sellIn = this.items[index].sellIn;
-    if (sellIn > 10) {
-      this.items[index].quality += 1;
-    } else if (sellIn <= 10 && sellIn > 5) {
-      this.items[index].quality += 2;
-    } else if (sellIn <= 5 && sellIn >= 0) {
-      this.items[index].quality += 3;
-    } else {
-      this.items[index].quality = 0;
+    var quality = this.items[index].quality;
+    if (quality <= 50) {
+      if (sellIn > 10) {
+        this.items[index].quality += 1;
+      } else if (sellIn <= 10 && sellIn > 5) {
+        this.items[index].quality += 2;
+      } else if (sellIn <= 5 && sellIn >= 0) {
+        this.items[index].quality += 3;
+      } else {
+        this.items[index].quality = 0;
+      }
     }
     this.items[index].sellIn -= 1;
   },
