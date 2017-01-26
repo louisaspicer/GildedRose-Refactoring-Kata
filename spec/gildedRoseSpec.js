@@ -137,7 +137,15 @@ describe("GildedRose", function() {
         expect(gildedRose.items[0].quality).toEqual(38);
       });
     });
+  });
 
+  describe("Conjured items", function() {
+    it("degrades in quality twice as fast as other items", function() {
+      var item = {name: "a Conjured item", sellIn: 10, quality: 40};
+      gildedRose.items = [item];
+      gildedRose.updateQuality();
+      expect(gildedRose.items[0].quality).toEqual(38);
+    });
   });
 
 
